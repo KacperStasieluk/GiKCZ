@@ -1,43 +1,37 @@
-import java.awt.*;       // Using AWT's Graphics and Color
-import java.awt.event.*; // Using AWT event classes and listener interfaces
-import javax.swing.*;    // Using Swing's components and containers
- 
-/** Custom Drawing Code Template */
-// A Swing application extends javax.swing.JFrame
+import java.awt.*; 
+import java.awt.event.*; 
+import javax.swing.*; 
+
 public class Obrazek extends JFrame {
-   // Define constants
+
    public static final int Szer  = 800;
    public static final int Wys = 800;
  
-   // Declare an instance of the drawing canvas,
-   // which is an inner class called DrawCanvas extending javax.swing.JPanel.
+
    private DrawCanvas plotno;
  
-   // Constructor to set up the GUI components and event handlers
+
    public Obrazek() {
-      plotno = new DrawCanvas();    // Construct the drawing canvas
+      plotno = new DrawCanvas();   
       plotno.setPreferredSize(new Dimension(Szer, Wys));
  
-      // Set the Drawing JPanel as the JFrame's content-pane
+
       Container cp = getContentPane();
       cp.add(plotno);
-      // or "setContentPane(canvas);"
+
  
-      setDefaultCloseOperation(EXIT_ON_CLOSE);   // Handle the CLOSE button
-      pack();              // Either pack() the components; or setSize()
-      //setTitle("......");  // "super" JFrame sets the title
-      setVisible(true);    // "super" JFrame show
+      setDefaultCloseOperation(EXIT_ON_CLOSE);  
+      pack();             
+      setVisible(true);    
    }
  
-   /**
-    * Define inner class DrawCanvas, which is a JPanel used for custom drawing.
-    */
+
    private class DrawCanvas extends JPanel {
-      // Override paintComponent to perform your own painting
+
       @Override
       public void paintComponent(Graphics g) {
-         super.paintComponent(g);     // paint parent's background
-         setBackground(Color.WHITE);  // set background color for this JPanel
+         super.paintComponent(g);     
+         setBackground(Color.WHITE); 
  
 		g.setColor(new Color(134,58,16));
 		int x1[] = {40,221,87};
@@ -197,13 +191,13 @@ public class Obrazek extends JFrame {
       }
    }
  
-   // The entry main method
+
    public static void main(String[] args) {
-      // Run the GUI codes on the Event-Dispatching thread for thread safety
+
       SwingUtilities.invokeLater(new Runnable() {
          @Override
          public void run() {
-            new Obrazek(); // Let the constructor do the job
+            new Obrazek(); 
          }
       });
    }
